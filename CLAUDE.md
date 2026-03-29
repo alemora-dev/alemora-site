@@ -36,3 +36,19 @@ Build command: `npm run build` | Output: `dist/`
 - Do NOT reference `alemora.dev` — taken by someone else
 - Do NOT reference `alejandromora.com` — another person entirely
 - Tone: direct, technical, no LinkedIn fluff
+
+## Projects
+
+All 6 Colombia Open Data projects are live:
+
+| App | URL | Stack |
+|-----|-----|-------|
+| Lupa Pública | lupa.alemora.me | Vanilla JS |
+| Mi Barrio en Cifras | barrio.alemora.me | Vanilla JS |
+| Respirar | respirar.alemora.me | Vite + Leaflet |
+| Mercado Justo | mercado.alemora.me | Vite + Leaflet |
+| Cine y Letras | cine.alemora.me | Vite + Leaflet |
+| GeoChomp | geochomp.alemora.me | Vanilla JS |
+
+To promote a project to live: add to `projects` array in `src/pages/index.astro` with subdomain URL.
+To show in-progress: add `labProjects` array and split the grid (see git history for reference).
