@@ -1,19 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const projects = [
+const liveProjects = [
   {
     tag: 'Colombia Open Data',
     name: 'Lupa Pública',
     description: 'Public contracts and spending explorer. Visualizes political anomalies from SECOP II data.',
-    url: 'https://github.com/alemora-dev/lupa-publica',
+    url: 'https://lupa.alemora.me',
   },
   {
     tag: 'Colombia Open Data',
     name: 'Mi Barrio en Cifras',
     description: '3D scrollytelling map of neighborhood demographics and public investment across Colombian cities.',
-    url: 'https://github.com/alemora-dev/mi-barrio-cifras',
+    url: 'https://barrio.alemora.me',
   },
+  {
+    tag: 'Game',
+    name: 'GeoChomp',
+    description: 'Real-life Pac-Man using GPS. Walk your neighborhood, eat pellets, escape ghosts. MapLibre + Turf.js.',
+    url: 'https://geochomp.alemora.me',
+  },
+];
+
+const labProjects = [
   {
     tag: 'Colombia Open Data',
     name: 'Respirar',
@@ -27,16 +36,10 @@ const projects = [
     url: 'https://github.com/alemora-dev/mercado-justo',
   },
   {
-    tag: 'Game',
-    name: 'GeoChomp',
-    description: 'Real-life Pac-Man using GPS. Walk your neighborhood, eat pellets, escape ghosts. MapLibre + Turf.js.',
-    url: 'https://github.com/alemora-dev/geo-chomp',
-  },
-  {
-    tag: 'AI Engineering',
-    name: 'Coming soon',
-    description: 'Building in public. Next project drops when it\'s ready, not when it looks good on a slide.',
-    url: null,
+    tag: 'Colombia Open Data',
+    name: 'Cine y Letras',
+    description: 'Cultural heritage explorer. Discover films, books, and immaterial patrimony by Colombian municipality.',
+    url: 'https://github.com/alemora-dev/cine-y-letras',
   },
 ];
 
@@ -81,18 +84,33 @@ const stack = ['Claude API', 'AWS Bedrock', 'Lambda', 'ECS', 'DynamoDB', 'RDS', 
 
   <!-- PROJECTS -->
   <section id="projects" class="px-12 py-20">
-    <p class="text-xs text-[#444] uppercase tracking-widest mb-12">Selected projects</p>
-    <div class="grid grid-cols-3 gap-px bg-[#1a1a1a]">
-      {projects.map((p) => (
+    <p class="text-xs text-[#444] uppercase tracking-widest mb-3">Live</p>
+    <div class="grid grid-cols-3 gap-px bg-[#1a1a1a] mb-16">
+      {liveProjects.map((p) => (
         <div class="bg-[#0a0a0a] p-8 border border-[#1a1a1a] hover:border-[#333] transition-colors">
           <p class="text-xs text-[#4ade80] uppercase tracking-widest mb-4">{p.tag}</p>
           <h3 class="text-lg font-semibold text-white mb-2 tracking-tight">{p.name}</h3>
           <p class="text-sm text-[#555] leading-relaxed mb-5">{p.description}</p>
-          {p.url && (
-            <a href={p.url} target="_blank" rel="noopener noreferrer" class="text-xs text-[#666] hover:text-white transition-colors">
-              View project →
-            </a>
-          )}
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="text-xs text-[#4ade80] hover:text-white transition-colors">
+            Open app →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-xs text-[#444] uppercase tracking-widest mb-3">In progress</p>
+    <div class="grid grid-cols-3 gap-px bg-[#1a1a1a]">
+      {labProjects.map((p) => (
+        <div class="bg-[#0a0a0a] p-8 border border-[#1a1a1a] hover:border-[#333] transition-colors">
+          <div class="flex items-center gap-3 mb-4">
+            <p class="text-xs text-[#555] uppercase tracking-widest">{p.tag}</p>
+            <span class="text-[10px] text-[#444] border border-[#222] px-2 py-0.5 rounded-full">In progress</span>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2 tracking-tight">{p.name}</h3>
+          <p class="text-sm text-[#555] leading-relaxed mb-5">{p.description}</p>
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="text-xs text-[#666] hover:text-white transition-colors">
+            View code →
+          </a>
         </div>
       ))}
     </div>
