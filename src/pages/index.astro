@@ -1,17 +1,132 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const projects = [
+  {
+    tag: 'Colombia Open Data',
+    name: 'Lupa Pública',
+    description: 'Public contracts and spending explorer. Visualizes political anomalies from SECOP II data.',
+    url: 'https://github.com/alemora-dev/lupa-publica',
+  },
+  {
+    tag: 'Colombia Open Data',
+    name: 'Mi Barrio en Cifras',
+    description: '3D scrollytelling map of neighborhood demographics and public investment across Colombian cities.',
+    url: 'https://github.com/alemora-dev/mi-barrio-cifras',
+  },
+  {
+    tag: 'Colombia Open Data',
+    name: 'Respirar',
+    description: 'Real-time air quality monitor using IDEAM environmental data. ICA and PM2.5 readings.',
+    url: 'https://github.com/alemora-dev/respirar',
+  },
+  {
+    tag: 'Colombia Open Data',
+    name: 'Mercado Justo',
+    description: 'Agricultural price monitor using SIPSA dataset. Spot price anomalies across Colombian markets.',
+    url: 'https://github.com/alemora-dev/mercado-justo',
+  },
+  {
+    tag: 'Game',
+    name: 'GeoChomp',
+    description: 'Real-life Pac-Man using GPS. Walk your neighborhood, eat pellets, escape ghosts. MapLibre + Turf.js.',
+    url: 'https://github.com/alemora-dev/geo-chomp',
+  },
+  {
+    tag: 'AI Engineering',
+    name: 'Coming soon',
+    description: 'Building in public. Next project drops when it\'s ready, not when it looks good on a slide.',
+    url: null,
+  },
+];
+
+const stack = ['Claude API', 'AWS Lambda', 'DynamoDB', 'Java', 'Spring Boot', 'Docker', 'Kubernetes', 'Python', 'PostgreSQL', 'GitHub Actions'];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- NAV -->
+  <nav class="flex justify-between items-center px-12 py-6 border-b border-[#1a1a1a]">
+    <span class="text-white font-semibold tracking-tight">alemora.me</span>
+    <div class="flex gap-8">
+      <a href="#projects" class="text-[#888] text-sm hover:text-white transition-colors">Projects</a>
+      <a href="#about" class="text-[#888] text-sm hover:text-white transition-colors">About</a>
+      <a href="mailto:ale@alemora.me" class="text-[#888] text-sm hover:text-white transition-colors">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="px-12 pt-28 pb-24 max-w-4xl">
+    <p class="text-xs text-[#666] tracking-widest uppercase mb-6">AI Engineer · Amsterdam</p>
+    <h1 class="text-6xl font-bold tracking-tighter leading-[1.05] text-white mb-6">
+      I build systems<br />
+      around <span class="text-[#4ade80]">AI</span>,<br />
+      not just prompts.
+    </h1>
+    <p class="text-xl text-[#888] leading-relaxed max-w-xl mb-10">
+      10+ years of backend engineering. Now focused on production-grade LLM
+      integrations using Claude API and AWS. I ship things and document what breaks.
+    </p>
+    <div class="flex gap-4 items-center">
+      <a href="#projects" class="bg-white text-black px-6 py-3 rounded-md text-sm font-semibold hover:bg-[#e8e8e8] transition-colors">
+        View projects
+      </a>
+      <a href="mailto:ale@alemora.me" class="text-[#888] text-sm border-b border-[#333] pb-0.5 hover:text-white hover:border-white transition-colors">
+        Get in touch →
+      </a>
+    </div>
+  </section>
+
+  <hr class="border-[#1a1a1a] mx-12" />
+
+  <!-- PROJECTS -->
+  <section id="projects" class="px-12 py-20">
+    <p class="text-xs text-[#444] uppercase tracking-widest mb-12">Selected projects</p>
+    <div class="grid grid-cols-3 gap-px bg-[#1a1a1a]">
+      {projects.map((p) => (
+        <div class="bg-[#0a0a0a] p-8 border border-[#1a1a1a] hover:border-[#333] transition-colors">
+          <p class="text-xs text-[#4ade80] uppercase tracking-widest mb-4">{p.tag}</p>
+          <h3 class="text-lg font-semibold text-white mb-2 tracking-tight">{p.name}</h3>
+          <p class="text-sm text-[#555] leading-relaxed mb-5">{p.description}</p>
+          {p.url && (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" class="text-xs text-[#666] hover:text-white transition-colors">
+              View project →
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="px-12 py-20 bg-[#0d0d0d] border-t border-b border-[#1a1a1a] grid grid-cols-2 gap-20 items-start">
+    <div>
+      <h2 class="text-4xl font-bold tracking-tighter text-white mb-5 leading-tight">
+        Engineer first.<br />AI second.
+      </h2>
+      <p class="text-base text-[#666] leading-relaxed mb-4">
+        Most AI integrations fail at the engineering layer, not the model layer.
+        I bring production discipline to LLM systems — reliability, observability,
+        failure handling. The stuff that matters when it's live.
+      </p>
+      <p class="text-sm text-[#444]">Available for project-based work. Not looking for employment.</p>
+    </div>
+    <div>
+      <p class="text-xs text-[#444] uppercase tracking-widest mb-4">Stack</p>
+      <div class="flex flex-wrap gap-2">
+        {stack.map((item) => (
+          <span class="bg-[#161616] border border-[#222] px-3 py-1.5 rounded text-xs text-[#888]">{item}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-12 py-10 flex justify-between items-center">
+    <p class="text-xs text-[#333]">© 2026 Alejandro Mora</p>
+    <div class="flex gap-6">
+      <a href="https://github.com/alemora-dev" target="_blank" rel="noopener noreferrer" class="text-xs text-[#444] hover:text-white transition-colors">GitHub</a>
+      <a href="https://linkedin.com/in/alejandro-mora-dev" target="_blank" rel="noopener noreferrer" class="text-xs text-[#444] hover:text-white transition-colors">LinkedIn</a>
+      <a href="mailto:ale@alemora.me" class="text-xs text-[#444] hover:text-white transition-colors">ale@alemora.me</a>
+    </div>
+  </footer>
+</Layout>
